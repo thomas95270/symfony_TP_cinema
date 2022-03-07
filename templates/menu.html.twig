@@ -1,0 +1,28 @@
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{{ path('accueil') }}">IMDb</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ path('liste_films') }}">Tous les films</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ path('app_artiste_index') }}">Tous les artistes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link">Accueil</a>
+  </li>
+
+    <li class="nav-item">
+      <a href="{{ path('admin_accueil') }}" class="nav-link">Accueil Admin</a>
+    </li>
+
+  {% if app.user %}
+    <li class="nav-item">
+      <a class="nav-link"  href="{{ path('app_logout') }}">Déconnexion</a>
+    </li>
+  {% else %}
+    <li class="nav-item">
+      <a class="nav-link"  href="{{ path('app_login') }}">Connexion</a>
+    </li>
+  {% endif %}
+</ul>

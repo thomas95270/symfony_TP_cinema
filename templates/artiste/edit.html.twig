@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Artiste{% endblock %}
+
+{% block body %}
+    <h1 class='text-light'>Edit Artiste</h1>
+
+    {{ include('artiste/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a  class='text-light' href="{{ path('accueil') }}">back to list</a>
+
+    {{ include('artiste/_delete_form.html.twig') }}
+{% endblock %}

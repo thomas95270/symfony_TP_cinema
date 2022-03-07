@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<h1>Accueil</h1>
+<h3>Liste des films</h3>
+
+<div class="container-fluid d-flex row">
+{% for film in films %}
+                    <div class="col-2 mx-auto mt-3 image-container text-center">
+                        <a href="{{ path('film_carte', {
+                            'titre': film.titre,
+                            'id': film.id
+                            }) }}"> <img  width=200px src="{{ asset('images/films/') ~ film.affiche }}"></a>
+                        <h6 >{{film.titre}}</h6>
+                    </div>
+{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IMDB | artiste{% endblock %}
+
+{% block body %}
+<h1>{{Artiste.nom ~ " " ~ Atiste.prenom}}</h1>
+
+<div class="container-fluid d-flex row">
+    <div class="col-7 m-4 mx-auto text-light">
+        <div class="d-flex">
+            <img  width=200px src="{{ asset('images/films/') ~ film.affiche }}">
+
+            <div class="m-2">
+                <h5>{{film.titre}}</h5>
+
+                <div>
+                    Synopsis : <br>
+                    {{film.description}}
+                </div>
+                <div>
+                    Date de sortie : {% set dateTime = date(film.dateSortie) %}
+                    {{ dateTime | date('d') }}
+                    {{ dateTime | date('F') }}
+                    {{ dateTime | date('Y') }}
+                </div>
+
+            </div>
+        </div>
+                </div>
+                <div class="d-flex justify-content-between mt-4">
+                    {% for art in film.artiste %}
+                        <div class="d-flex  flex-column text-center">
+                            <a href=""><img  width=200px src="{{ asset('images/artistes/') ~ art.portrait }}"></a>
+                            {{art.nom}}<br>
+                        </div>
+                    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

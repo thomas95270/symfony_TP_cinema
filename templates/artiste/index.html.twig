@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artiste index{% endblock %}
+
+{% block body %}
+    <h1>Artiste index</h1>
+{% include 'Admin/sidebar.html.twig' %}
+
+<main>
+
+    <table class="table text-light col-8">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Portrait</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for artiste in artistes %}
+            <tr class="align-middle">
+                <td>{{ artiste.id }}</td>
+                <td>{{ artiste.nom }}</td>
+                <td>{{ artiste.prenom }}</td>
+                <td>                    <div class="col-5 mx-auto mt-3 image-container">
+                        <figure class="figure">
+                            <img height=150px src="{{ asset('images/artistes/') ~ artiste.portrait }}">
+                        </figure>
+                        <figcaption class="figure-caption text-light">
+                            {{ artiste.prenom ~ " " ~ artiste.nom }}
+                        </figcaption>
+                    </div>
+
+                </td>
+                <td>
+                    <a  class='text-light' href="{{ path('app_artiste_show', {'id': artiste.id}) }}">show</a>
+                    <a  class='text-light' href="{{ path('app_artiste_edit', {'id': artiste.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a  class='text-light' href="{{ path('app_artiste_new') }}">Create new</a>
+    <a  class='text-light' href="href="{{ path('accueil') }}"">Accueil</a>
+</main>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IMDb | Accueil{% endblock %}
+
+{% block body %}
+<h1>Accueil</h1>
+<h3>Liste des films</h3>
+
+<div class="container-fluid d-flex row">
+{% for film in films %}
+    <div class="card col-7 m-4 mx-auto text-dark">
+        <div class="d-flex">
+            <img  width=200px src="{{ asset('images/films/') ~ film.affiche }}">
+
+            <div class="m-2">
+                <h5>{{film.titre}}</h5>
+                <div>{{film.description}}</div>
+                <div>film.dateSortie</div>
+                <div class="d-flex  justify-content-between mt-4">
+                    <div>film.acteurs</div>
+                    <div>film.realisateurs</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
